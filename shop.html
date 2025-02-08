@@ -1,0 +1,237 @@
+<!-- Nicole's Tennis Club Product Web Pages -->
+<!DOCTYPE HTML5>
+<HTML>
+    <HEAD>
+        <title>List of All Products</title>
+    </HEAD>
+    <body bgcolor=white> <!--  White Background for Neatness  -->
+        <a href="index.html"><img width=20% src="Images/Logo.png"></a>
+        <h1><font face="Verdana">Tennis Set Products</font></h1>
+        
+        <center>
+            <h2><font color=Red face="Arial">Free Express Shipping for purchase over $300</font></h2>
+        </centre>
+        
+        <table align="center" width=100% border="0">
+            <tr>
+                <td align="center"><img width=80% src="Images/Set%201.JPG" alt="Product 1"></td>
+                <!-- I got this pic from "https://www.xiaohongshu.com/" -->
+                <td align="center"><img width=80% src="Image/Set%202.JPG" alt="Product 2"></td>
+                <!-- I got this pic from "https://www.xiaohongshu.com/" -->
+                <td align="center"><img width=80% src="Images/Set%203.JPG" alt="Product 3"></td>
+                <!-- I got this pic from "https://www.xiaohongshu.com/" -->
+            </tr>
+            <tr>
+                <td align="center">$200</td>
+                <td align="center">$199</td>
+                <td align="center">$150</td>
+            </tr>
+
+            <tr>
+                <td align="center">
+                Quantity:
+                <INPUT TYPE="NUMBER" ID="item1" min=0 max=10 value=0>
+                </td>
+            
+                <td align="center">
+                Quantity:
+                <INPUT TYPE="NUMBER" ID="item2" min=0 max=10 value=0>
+                </td>
+
+                <td align="center">
+                Quantity:
+                <INPUT TYPE="NUMBER" ID="item3" min=0 max=10 value=0>
+                </td>
+            </tr>
+    
+            <tr>
+                <td align="center"><img width=80% src="Images/Set%204.JPG" alt="Product 4"></td>
+                <!-- I got this pic from "https://www.xiaohongshu.com/" -->
+                <td align="center"><img width=80% src="Images/Set%205.JPG" alt="Product 5"></td>
+                <!-- I got this pic from "https://www.xiaohongshu.com/" -->
+                <td align="center"><img width=80% src="Images/Set%206.JPG" alt="Product 6"></td>
+                <!-- I got this pic from "https://www.xiaohongshu.com/" -->
+            </tr>
+            <tr>
+                <td align="center">$151</td>
+                <td align="center">$350</td>
+                <td align="center">$299</td>
+            </tr>
+
+
+            <tr>
+                <td align="center">
+                Quantity:
+                <INPUT TYPE="NUMBER" ID="item4" min=0 max=10 value=0>
+                </td>
+            
+                <td align="center">
+                Quantity:
+                <INPUT TYPE="NUMBER" ID="item5" min=0 max=10 value=0>
+                </td>
+
+                <td align="center">
+                Quantity:
+                <INPUT TYPE="NUMBER" ID="item6" min=0 max=10 value=0>
+                </td>
+            </tr>
+
+        </table>
+        <center>
+            <FORM>
+                <br>
+                <p>Please Select your shipping options: </p>
+                <select id="shipping">
+                    <option value="0">Select an option</option>
+                    <option value="Standard">Standard (3-7 business days) - $10 (Free Express Shipping for purchase over $300)</option>
+                    <option value="Express">Express (1-3 business days) - $15 (Free Express Shipping for purchase over $300)</option>
+                </select>
+                <br>
+                Gift wrapping - $5
+                <INPUT TYPE="checkbox" NAME="wrapping" ID="wrapping" VALUE="no" checked><br>
+                <INPUT TYPE="button" VALUE="Add to cart" onClick="getTotalPrice()">
+                <p id="DisplayTotal">Total: </p>
+                <INPUT TYPE="button" VALUE="Pay now" onClick="pay()">
+
+            </FORM>
+        </center>   
+
+        <p><a href="index.html">Back to Home</a></p>
+    
+        <SCRIPT>
+			Console.log("Begin js");
+            // They are global variables. 
+            var I1Quantity, I2Quantity, I3Quantity, I4Quantity, I5Quantity, I6Quantity; // 6 Items
+            var I1Price = 200, I2Price = 199, I3Price =150, I4Price= 151, I5Price = 350, I6Price = 299; // 6 Prices
+            var I1Cost, I2Cost, I3Cost, I4Cost, I5Cost, I6Cost; // 6 Costs
+            var discount = 20; // If you buy 2 or more items, you will have a 20% discount.
+            var shippingPrice = 10; // Shipping price will be $10 for "Standard" OR $15 for "Express" or Free Express Shipping for purchase over $300
+            var wrappingPrice = 0; // Wrapping Price is $5
+            var TotalCost = 0;
+            var OriginalCost = 0;
+            var valid = false; 
+            function getTotalPrice() {
+                //alert(item1.value + item2.value); // 1 + 2 is 12//
+                I1Quantity = parseInt(item1.value);
+                I2Quantity = parseInt(item2.value);
+                I3Quantity = parseInt(item3.value);
+                I4Quantity = parseInt(item4.value);
+                I5Quantity = parseInt(item5.value);
+                I6Quantity = parseInt(item6.value);
+                //alert(I1 + I2 + I3 + I4 + I5 + I6); 
+                var TotalItems = I1Quantity + I2Quantity + I3Quantity + I4Quantity + I5Quantity + I6Quantity;
+                I1Cost = I1Quantity * I1Price;
+                I2Cost = I2Quantity * I2Price;
+                I3Cost = I3Quantity * I3Price;
+                I4Cost = I4Quantity * I4Price;
+                I5Cost = I5Quantity * I5Price;
+                I6Cost = I6Quantity * I6Price;
+                TotalCost = I1Cost + I2Cost + I3Cost + I4Cost + I5Cost + I6Cost;
+                OriginalCost = TotalCost;
+
+                
+                if (TotalItems >= 2)// clients can get discount
+                {
+                    
+                    var code = prompt("Enter discount code or leave blank to continue: ");
+        
+                    while (code != "SHOP20" && code != " ") 
+                    {
+                        code = prompt("Enter discount code or leave blank to continue: ");
+                    }
+                    
+                    if (code == "SHOP20") 
+                    {
+                        discount = 0.2;
+                    }
+                }
+                
+                
+                // console.log("Total cost is: " + TotalCost)
+                
+                if (TotalCost <= 300) 
+                {
+                    var option = shipping.value;
+
+                    if (option == "Standard") {
+                        shippingPrice = 10;
+                    } else {
+                        shippingPrice = 15;
+                    }
+                 } 
+                else 
+                        shippingPrice = 0;
+                
+
+                TotalCost = TotalCost * (1 - discount);
+                TotalCost = TotalCost + shippingPrice;
+
+                
+                if (document.getElementById("wrapping").checked) 
+                {
+                    wrappingPrice = 5;
+                    TotalCost = TotalCost + wrappingPrice;
+                }
+                eise
+                    TotalCost = TotalCost
+
+                TotalCostStr = TotalCost.toFixed(2);
+                document.getElementById("DisplayTotal").innerHTML = "Total: $" + TotalCostStr;
+
+                valid = (TotalItems >= 0); // Did the customer actually order anything?
+            }
+
+            function pay() 
+            {
+                if (!valid) 
+                {
+                    alert("Your cart is empty, please add something to the cart");
+                } 
+                else 
+                {
+                    var output = "";
+                    // Add all the existing items to the output
+                    if (I1Quantity > 0)
+                        output = output + "Item1: $" + I1Price + " * " + I1Quantity + " = $" + I1Cost + "\n";
+                    if (I2Quantity > 0)
+                        output = output + "Item2: $" + I2Price + " * " + I2Quantity + " = $" + I2Cost + "\n";
+                    if (I3Quantity > 0)
+                        output = output + "Item3: $" + I3Price + " * " + I3Quantity + " = $" + I3Cost + "\n";
+                    if (I4Quantity > 0)
+                        output = output + "Item4: $" + I4Price + " * " + I4Quantity + " = $" + I4Cost + "\n";
+                    if (I5Quantity > 0)
+                        output = output + "Item5: $" + I5Price + " * " + I5Quantity + " = $" + I5Cost + "\n";
+                    if (I6Quantity > 0)
+                        output = output + "Item6: $" + I6Price + " * " + I6Quantity + " = $" + I6Cost + "\n";
+                    
+                    if (discount > 0)
+                        {
+                            output = output + "Subtotal: $" + OriginalCost + "\n";
+                            output = output + (discount % 100) + "% discount" + "\n";
+                        }
+                    else
+                        {
+                            output = output + "Subtotal: $" + OriginalCost + "\n";
+                        }
+                    
+                    if (shippingPrice = 0)
+                        output = output + "Free Express Shipping\n";
+                    else
+                        output = output + "Shipping: $" + shippingPrice + "\n";
+                    
+                    if (wrappingPrice == 5)
+                        output = output + "Wrapping: $" + wrappingPrice + "\n";
+                    else
+                        output = output + "No wrapping\n";
+                    
+                    if (discount > 0)
+                        output = output + "Final Price: $" + OriginalCost + " * " + (1 - discount) + " + $" + shippingPrice + " + $" + wrappingPrice + " = $" + TotalCostStr;
+                    else
+                        output = output + "Total: $" + OriginalCost + " + $" + shippingPrice + " + $" + wrappingPrice + " = $" + TotalCostStr;
+
+                    alert(output);
+                }
+            }
+        </SCRIPT>
+    </body>
+</HTML>
