@@ -127,7 +127,7 @@
                 I5Cost = I5Quantity * I5Price;
                 I6Cost = I6Quantity * I6Price;
                 TotalCost = I1Cost + I2Cost + I3Cost + I4Cost + I5Cost + I6Cost;
-                OriginalCost = TotalCost;   
+                OriginalCost = TotalCost;
 
                 
                 if (TotalItems >= 2)// clients can get discount
@@ -135,7 +135,7 @@
                     
                     var code = prompt("Enter discount code or leave blank to continue: ");
         
-                    while (code != "SHOP20" && code != " ") 
+                    while (code != "SHOP20" && code != "") //fixed the empty space  Al.
                     {
                         code = prompt("Enter discount code or leave blank to continue: ");
                     }
@@ -172,8 +172,8 @@
                     wrappingPrice = 5;
                     TotalCost = TotalCost + wrappingPrice;
                 }
-                eise
-                    TotalCost = TotalCost   #Does't do anything
+                else //fixed typo Al.
+                    TotalCost = TotalCost
 
                 TotalCostStr = TotalCost.toFixed(2);
                 document.getElementById("DisplayTotal").innerHTML = "Total: $" + TotalCostStr;
