@@ -224,8 +224,8 @@
                     else
                         output = output + "No wrapping\n";
                     
-                    if (discount > 0)
-                        output = output + "Final Price: $" + OriginalCost + " * " + (1 - discount) + " + $" + shippingPrice + " + $" + wrappingPrice + " = $" + TotalCostStr;
+                    if (discount > 0)      //fixed typo in line 228, the string was " *" instead of   " + $"
+                        output = output + "Final Price: $" + OriginalCost + " + $ " + (1 - discount) + " + $" + shippingPrice + " + $" + wrappingPrice + " = $" + TotalCostStr;
                     else
                         output = output + "Total: $" + OriginalCost + " + $" + shippingPrice + " + $" + wrappingPrice + " = $" + TotalCostStr;
 
