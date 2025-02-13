@@ -10,13 +10,13 @@
         
         <center>
             <h2><font color=Red face="Arial">Free Express Shipping for purchase over $300</font></h2>
-        </centre>
+        </center>
         
         <table align="center" width=100% border="0">
             <tr>
                 <td align="center"><img width=80% src="Images/Set%201.JPG" alt="Product 1"></td>
                 <!-- I got this pic from "https://www.xiaohongshu.com/" -->
-                <td align="center"><img width=80% src="Image/Set%202.JPG" alt="Product 2"></td>
+                <td align="center"><img width=80% src="Images/Set%202.JPG" alt="Product 2"></td>
                 <!-- I got this pic from "https://www.xiaohongshu.com/" -->
                 <td align="center"><img width=80% src="Images/Set%203.JPG" alt="Product 3"></td>
                 <!-- I got this pic from "https://www.xiaohongshu.com/" -->
@@ -99,12 +99,12 @@
         <p><a href="index.html">Back to Home</a></p>
     
         <SCRIPT>
-			Console.log("Begin js");
+	//		Console.log();
             // They are global variables. 
             var I1Quantity, I2Quantity, I3Quantity, I4Quantity, I5Quantity, I6Quantity; // 6 Items
             var I1Price = 200, I2Price = 199, I3Price =150, I4Price= 151, I5Price = 350, I6Price = 299; // 6 Prices
             var I1Cost, I2Cost, I3Cost, I4Cost, I5Cost, I6Cost; // 6 Costs
-            var discount = 20; // If you buy 2 or more items, you will have a 20% discount.
+            var discount = 0; // If you buy 2 or more items, you will have a 20% discount.
             var shippingPrice = 10; // Shipping price will be $10 for "Standard" OR $15 for "Express" or Free Express Shipping for purchase over $300
             var wrappingPrice = 0; // Wrapping Price is $5
             var TotalCost = 0;
@@ -172,7 +172,7 @@
                     wrappingPrice = 5;
                     TotalCost = TotalCost + wrappingPrice;
                 }
-                eise
+                else //fixed typo Al.
                     TotalCost = TotalCost
 
                 TotalCostStr = TotalCost.toFixed(2);
@@ -207,14 +207,14 @@
                     if (discount > 0)
                         {
                             output = output + "Subtotal: $" + OriginalCost + "\n";
-                            output = output + (discount % 100) + "% discount" + "\n";
+                            output = output + (discount * 100) + "% discount" + "\n";
                         }
                     else
                         {
                             output = output + "Subtotal: $" + OriginalCost + "\n";
                         }
                     
-                    if (shippingPrice = 0)
+                    if (shippingPrice == 0)
                         output = output + "Free Express Shipping\n";
                     else
                         output = output + "Shipping: $" + shippingPrice + "\n";
